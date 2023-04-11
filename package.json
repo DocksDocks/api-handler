@@ -1,0 +1,42 @@
+{
+  "name": "@docksdocks/api-handler",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/empathy-company/api_modules.git"
+  },
+  "description": "A package created to deal with specific API requests.",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/node-fetch": "^2.6.3",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.3",
+    "vitest": "^0.30.0"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsx src/app.ts",
+    "start:dev": "tsx watch src/app.ts",
+    "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "test": "vitest"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Eduardo Marquez",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  },
+  "types": "./dist/cjs/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/empathy-company/api_modules/issues"
+  },
+  "homepage": "https://github.com/empathy-company/api_modules#readme"
+}
