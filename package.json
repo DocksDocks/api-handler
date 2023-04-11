@@ -19,8 +19,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsx src/app.ts",
-    "start:dev": "tsx watch src/app.ts",
+    "start": "tsx src/index.ts",
+    "start:dev": "tsx watch src/index.ts",
     "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
