@@ -5,7 +5,7 @@
 # Usage
 
 ```
-import { POST } from 'api-handler-empathy'
+import { POST } from 'empathy-api-handler'
 
 const route: string = "http://localhost:3333/api/auth/generate_access_token";
   const payload: Object = {
