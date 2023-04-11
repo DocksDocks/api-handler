@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/empathy-company/api_modules.git"
+    "url": "git+https://github.com/DocksDocks/api-handler.git"
   },
   "description": "A package created to deal with specific API requests.",
   "devDependencies": {
@@ -36,7 +36,7 @@
   },
   "types": "./dist/cjs/index.d.ts",
   "bugs": {
-    "url": "https://github.com/empathy-company/api_modules/issues"
+    "url": "https://github.com/DocksDocks/api-handler/issues"
   },
-  "homepage": "https://github.com/empathy-company/api_modules#readme"
+  "homepage": "https://github.com/DocksDocks/api-handler#readme"
 }
