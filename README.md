@@ -1,5 +1,7 @@
 # Installation
 
+Current Version - v1.0.3
+
 `npm i empathy-api-handler`
 
 # Usage
