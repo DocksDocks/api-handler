@@ -1,6 +1,6 @@
 # Installation
 
-`npm i api-handler-empathy`
+`npm i empathy-api-handler`
 
 # Usage
 
