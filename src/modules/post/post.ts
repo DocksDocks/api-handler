@@ -1,4 +1,4 @@
-import { Payload, ResponseObject } from "../../constants";
+import { FIXED_OPTIONS, Payload, ResponseObject } from "../../constants";
 import { HASH_DECODE } from "../../hooks";
 import fetch from "node-fetch";
 
@@ -15,10 +15,7 @@ export async function POST({
     HASH_DECODE(hash);
     const options = {
       method: "POST",
-      credentials: "include" as RequestCredentials,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      ...FIXED_OPTIONS,
       body: JSON.stringify(payload),
     };
     // Make API request and get response object

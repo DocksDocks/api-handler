@@ -1,4 +1,4 @@
-import { Payload, ResponseObject } from "../../constants";
+import { FIXED_OPTIONS, Payload, ResponseObject } from "../../constants";
 import { HASH_DECODE } from "../../hooks";
 import fetch from "node-fetch";
 
@@ -15,16 +15,13 @@ export async function GET({
     HASH_DECODE(hash);
     const options = {
       method: "GET",
-      credentials: "include" as RequestCredentials,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      ...FIXED_OPTIONS,
     };
     // Make API request and get response object
     const response = await fetch(route, options);
     const responseObject: ResponseObject = await response.json();
     // Use Object.entries to iterate over the properties of the payload object,
-    // and only include the properties that exist in the response oabject
+    // and only include the properties that exist in the response object
     if (Object.keys(payload).length === 0) return responseObject;
     const pickedObject = Object.fromEntries(
       Object.entries(payload)
