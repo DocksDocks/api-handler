@@ -1,6 +1,6 @@
 {
   "name": "empathy-api-handler",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DocksDocks/api-handler.git"
