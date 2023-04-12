@@ -3,10 +3,12 @@ import { HASH_DECODE } from "../../hooks";
 import fetch from "node-fetch";
 
 export async function GET({
+  cookie = "",
   route,
   payload = {},
   hash,
 }: {
+  cookie?: string;
   route: string;
   payload?: Payload;
   hash: string;
@@ -15,7 +17,7 @@ export async function GET({
     HASH_DECODE(hash);
     const options = {
       method: "GET",
-      ...FIXED_OPTIONS,
+      ...FIXED_OPTIONS({ cookie }),
     };
     // Make API request and get response object
     const response = await fetch(route, options);

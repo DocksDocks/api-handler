@@ -4,9 +4,12 @@ export type Payload = {
 
 export type ResponseObject = Record<string, any>;
 
-export const FIXED_OPTIONS = {
-  credentials: "include" as RequestCredentials,
-  headers: {
-    "Content-Type": "application/json",
-  },
+export const FIXED_OPTIONS = ({ cookie = "" }: { cookie?: string }) => {
+  return {
+    credentials: "include" as RequestCredentials,
+    headers: {
+      "Content-Type": "application/json",
+      cookie: cookie!,
+    },
+  };
 };
