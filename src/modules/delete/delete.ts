@@ -15,7 +15,7 @@ export async function DELETE(settings: typeof DELETE_SETTINGS) {
     };
     // Make API request and get response object
     const response = await fetch(settings.route, options);
-    if (!settings.return_json) return response
+    if (!settings.return_json) return response;
     const responseObject: ResponseObject = await response.json();
     return responseObject;
   } catch (e) {
@@ -37,4 +37,3 @@ export const DELETE_SETTINGS: {
   credentials: "include",
   return_json: true,
 };
-

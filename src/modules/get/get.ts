@@ -15,7 +15,7 @@ export async function GET(settings: typeof GET_SETTINGS) {
     };
     // Make API request and get response object
     const response = await fetch(settings.route, options);
-    if (!settings.return_json) return response
+    if (!settings.return_json) return response;
     const responseObject: ResponseObject = await response.json();
     // Use Object.entries to iterate over the properties of the payload object,
     // and only include the properties that exist in the response object

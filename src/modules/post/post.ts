@@ -16,7 +16,7 @@ export async function POST(settings: typeof POST_SETTINGS) {
     };
     // Make API request and get response object
     const response = await fetch(settings.route, options);
-    if (!settings.return_json) return response
+    if (!settings.return_json) return response;
     const responseObject: ResponseObject = await response.json();
     return responseObject;
   } catch (e) {
@@ -24,7 +24,6 @@ export async function POST(settings: typeof POST_SETTINGS) {
     return e;
   }
 }
-
 
 export const POST_SETTINGS: {
   cookie?: string;
