@@ -1,22 +1,21 @@
 import fetch from "node-fetch";
-import { POST_SETTINGS, ResponseObject } from "../../constants";
+import { Payload, ResponseObject } from "../../constants";
 import { HASH_DECODE } from "../../hooks";
 
 export async function POST(settings: typeof POST_SETTINGS) {
   try {
-    const { cookie, route, payload, hash, credentials } = settings;
-    HASH_DECODE(hash);
+    HASH_DECODE(settings.hash);
     const options = {
       method: "POST",
-      credentials: credentials ?? "include",
+      credentials: settings.credentials ?? "include",
       headers: {
         "Content-Type": "application/json",
-        cookie: cookie!,
+        cookie: settings.cookie!,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(settings.payload),
     };
     // Make API request and get response object
-    const response = await fetch(route, options);
+    const response = await fetch(settings.route, options);
     if (!settings.return_json) return response
     const responseObject: ResponseObject = await response.json();
     return responseObject;
@@ -25,3 +24,20 @@ export async function POST(settings: typeof POST_SETTINGS) {
     return e;
   }
 }
+
+
+export const POST_SETTINGS: {
+  cookie?: string;
+  route: string;
+  payload: Payload;
+  hash: string;
+  credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
+  return_json?: boolean;
+} = {
+  cookie: "",
+  route: "",
+  payload: {},
+  hash: "",
+  credentials: "include",
+  return_json: true,
+};

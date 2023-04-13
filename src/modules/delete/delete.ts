@@ -1,21 +1,20 @@
 import fetch from "node-fetch";
-import { DELETE_SETTINGS, ResponseObject } from "../../constants";
+import { ResponseObject } from "../../constants";
 import { HASH_DECODE } from "../../hooks";
 
 export async function DELETE(settings: typeof DELETE_SETTINGS) {
   try {
-    const { cookie, route, hash, credentials } = settings;
-    HASH_DECODE(hash);
+    HASH_DECODE(settings.hash);
     const options = {
       method: "DELETE",
-      credentials: credentials ?? "include",
+      credentials: settings.credentials ?? "include",
       headers: {
         "Content-Type": "application/json",
-        cookie: cookie!,
+        cookie: settings.cookie!,
       },
     };
     // Make API request and get response object
-    const response = await fetch(route, options);
+    const response = await fetch(settings.route, options);
     if (!settings.return_json) return response
     const responseObject: ResponseObject = await response.json();
     return responseObject;
@@ -24,3 +23,18 @@ export async function DELETE(settings: typeof DELETE_SETTINGS) {
     return e;
   }
 }
+
+export const DELETE_SETTINGS: {
+  cookie?: string;
+  route: string;
+  hash: string;
+  credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
+  return_json?: boolean;
+} = {
+  cookie: "",
+  route: "",
+  hash: "",
+  credentials: "include",
+  return_json: true,
+};
+
