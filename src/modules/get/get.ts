@@ -1,10 +1,8 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
-import { HASH_DECODE } from "../../hooks";
 
 export async function GET(settings: typeof GET_SETTINGS) {
   try {
-    HASH_DECODE(settings.hash);
     const options = {
       method: "GET",
       credentials: settings.credentials ?? "include",

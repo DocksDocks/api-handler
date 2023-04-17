@@ -1,10 +1,8 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
-import { HASH_DECODE } from "../../hooks";
 
 export async function POST(settings: typeof POST_SETTINGS) {
   try {
-    HASH_DECODE(settings.hash);
     const options = {
       method: "POST",
       credentials: settings.credentials ?? "include",

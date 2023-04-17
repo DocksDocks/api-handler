@@ -1,10 +1,8 @@
 import fetch from "node-fetch";
 import { ResponseObject } from "../../constants";
-import { HASH_DECODE } from "../../hooks";
 
 export async function DELETE(settings: typeof DELETE_SETTINGS) {
   try {
-    HASH_DECODE(settings.hash);
     const options = {
       method: "DELETE",
       credentials: settings.credentials ?? "include",
