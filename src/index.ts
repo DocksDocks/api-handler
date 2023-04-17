@@ -16,28 +16,26 @@ export class ApiHandler {
   constructor(hash: string) {
     this.hash = hash;
   }
-  GET(
-    settings: typeof GET_SETTINGS
-  ): Promise<any> | { error: boolean; message: string } {
+  GET(settings: typeof GET_SETTINGS): Promise<any> | Promise<{ error: boolean; message: string }> {
     if (HASH_DECODE(settings.hash, this.hash)) return GET(settings);
-    return ErrorHandlerObject;
+    return Promise.resolve(ErrorHandlerObject);
   }
   POST(
     settings: typeof POST_SETTINGS
-  ): Promise<any> | { error: boolean; message: string } {
+  ): Promise<any> | Promise<{ error: boolean; message: string }> {
     if (HASH_DECODE(settings.hash, this.hash)) return POST(settings);
-    return ErrorHandlerObject;
+    return Promise.resolve(ErrorHandlerObject);
   }
   DELETE(
     settings: typeof DELETE_SETTINGS
-  ): Promise<any> | { error: boolean; message: string } {
+  ): Promise<any> | Promise<{ error: boolean; message: string }> {
     if (HASH_DECODE(settings.hash, this.hash)) return DELETE(settings);
-    return ErrorHandlerObject;
+    return Promise.resolve(ErrorHandlerObject);
   }
   PUT(
     settings: typeof PUT_SETTINGS
-  ): Promise<any> | { error: boolean; message: string } {
+  ): Promise<any> | Promise<{ error: boolean; message: string }> {
     if (HASH_DECODE(settings.hash, this.hash)) return PUT(settings);
-    return ErrorHandlerObject;
+    return Promise.resolve(ErrorHandlerObject);
   }
 }
