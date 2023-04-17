@@ -16,7 +16,9 @@ export class ApiHandler {
   constructor(hash: string) {
     this.hash = hash;
   }
-  GET(settings: typeof GET_SETTINGS): Promise<any> | Promise<{ error: boolean; message: string }> {
+  GET(
+    settings: typeof GET_SETTINGS
+  ): Promise<any> | Promise<{ error: boolean; message: string }> {
     if (HASH_DECODE(settings.hash, this.hash)) return GET(settings);
     return Promise.resolve(ErrorHandlerObject);
   }
