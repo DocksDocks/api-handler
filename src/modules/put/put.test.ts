@@ -7,7 +7,9 @@ test("PUT - SUCCESS - TEST", async () => {
     name: "Tester",
   };
   const hash: string = `hello`;
-  const result = await PUT({ route, payload, hash }).then((res) => { return (res.json())});
+  const result = await PUT({ route, payload, hash }).then((res) => {
+    return res.json();
+  });
   expect(result).toHaveProperty("id");
   expect(result).toHaveProperty("email");
   expect(result).toHaveProperty("name");
@@ -19,7 +21,9 @@ test("PUT - FAIL - TEST", async () => {
     email: "test@email.com",
   };
   const hash: string = `hello`;
-  const result = await PUT({ route, payload, hash }).then((res) => { return (res.json())});
+  const result = await PUT({ route, payload, hash }).then((res) => {
+    return res.json();
+  });
   expect(result).toHaveProperty("error");
   expect(result).toHaveProperty("message");
-})
+});

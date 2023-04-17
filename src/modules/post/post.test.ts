@@ -8,10 +8,12 @@ test("POST - SUCCESS - TEST", async () => {
   const payload: Object = {
     name: "Test",
     email: email + "@email.com",
-    password: password + "test123"
+    password: password + "test123",
   };
   const hash: string = `hello`;
-  const result = await POST({ route, payload, hash }).then((res) => { return res.json() });
+  const result = await POST({ route, payload, hash }).then((res) => {
+    return res.json();
+  });
   expect(result).toHaveProperty("id");
   expect(result).toHaveProperty("email");
   expect(result).toHaveProperty("name");
@@ -24,7 +26,9 @@ test("POST - FAIL - TEST", async () => {
     password: "test123",
   };
   const hash: string = `hello`;
-  const result = await POST({ route, payload, hash }).then((res) => { return res.json() });
+  const result = await POST({ route, payload, hash }).then((res) => {
+    return res.json();
+  });
   expect(result).toHaveProperty("error");
   expect(result).toHaveProperty("message");
 });
