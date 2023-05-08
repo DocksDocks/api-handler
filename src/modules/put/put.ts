@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
 
-export async function PUT(settings: typeof PUT_SETTINGS) {
+export async function PUT(settings: typeof DEFAULT_PUT_SETTINGS) {
   try {
+    settings = Object.assign({}, DEFAULT_PUT_SETTINGS, settings);
     const options = {
       method: "PUT",
       credentials: settings.credentials ?? "include",
@@ -23,7 +24,7 @@ export async function PUT(settings: typeof PUT_SETTINGS) {
   }
 }
 
-export const PUT_SETTINGS: {
+export const DEFAULT_PUT_SETTINGS: {
   cookie?: string;
   route: string;
   payload: Payload;

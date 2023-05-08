@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
 
-export async function GET(settings: typeof GET_SETTINGS) {
+export async function GET(settings: typeof DEFAULT_GET_SETTINGS) {
   try {
+    settings = Object.assign({}, DEFAULT_GET_SETTINGS, settings);
     const options = {
       method: "GET",
       credentials: settings.credentials ?? "include",
@@ -30,7 +31,7 @@ export async function GET(settings: typeof GET_SETTINGS) {
   }
 }
 
-export const GET_SETTINGS: {
+export const DEFAULT_GET_SETTINGS: {
   cookie?: string;
   route: string;
   payload?: Payload;

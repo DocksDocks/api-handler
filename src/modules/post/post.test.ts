@@ -1,8 +1,13 @@
-import { test, expect } from "vitest";
-import { POST } from "./post";
+import { expect, test } from "vitest";
+import { ApiHandler } from "../..";
+
+const basePath = "http://localhost:3333";
+// const basePath = "https://actual_url.com";
+const hash: string = `hello`;
+const apiHandler = new ApiHandler(hash, basePath);
 
 test("POST - SUCCESS - TEST", async () => {
-  const route: string = "http://localhost:3333/api/test";
+  const route: string = "/api/test";
   let email = (Math.random() + 1).toString(36).substring(7);
   let password = (Math.random() + 1).toString(36).substring(2);
   const payload: Object = {
@@ -10,25 +15,20 @@ test("POST - SUCCESS - TEST", async () => {
     email: email + "@email.com",
     password: password + "test123",
   };
-  const hash: string = `hello`;
-  const result = await POST({ route, payload, hash }).then((res) => {
-    return res.json();
-  });
+  const result = await apiHandler.POST({ route, payload, hash });
   expect(result).toHaveProperty("id");
   expect(result).toHaveProperty("email");
   expect(result).toHaveProperty("name");
 });
 
 test("POST - FAIL - TEST", async () => {
-  const route: string = "http://localhost:3333/api/test";
+  const route: string = "/api/test";
   const payload: Object = {
     email: "test@email.com",
     password: "test123",
   };
   const hash: string = `hello`;
-  const result = await POST({ route, payload, hash }).then((res) => {
-    return res.json();
-  });
+  const result = await apiHandler.POST({ route, payload, hash });
   expect(result).toHaveProperty("error");
   expect(result).toHaveProperty("message");
 });
