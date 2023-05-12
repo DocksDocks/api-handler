@@ -2,26 +2,21 @@ import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
 
 export async function PUT_CALL_ROUTE(settings: typeof DEFAULT_PUT_SETTINGS) {
-  try {
-    settings = Object.assign({}, DEFAULT_PUT_SETTINGS, settings);
-    const options = {
-      method: "PUT",
-      credentials: settings.credentials ?? "include",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: settings.cookie!,
-      },
-      body: JSON.stringify(settings.payload),
-    };
-    // Make API request and get response object
-    const response = await fetch(settings.route, options);
-    if (!settings.return_json) return response;
-    const responseObject: ResponseObject = await response.json();
-    return responseObject;
-  } catch (e) {
-    console.log(e);
-    return e;
-  }
+  settings = Object.assign({}, DEFAULT_PUT_SETTINGS, settings);
+  const options = {
+    method: "PUT",
+    credentials: settings.credentials ?? "include",
+    headers: {
+      "Content-Type": "application/json",
+      cookie: settings.cookie!,
+    },
+    body: JSON.stringify(settings.payload),
+  };
+  // Make API request and get response object
+  const response = await fetch(settings.route, options);
+  if (!settings.return_json) return response;
+  const responseObject: ResponseObject = await response.json();
+  return responseObject;
 }
 
 export const DEFAULT_PUT_SETTINGS: {
