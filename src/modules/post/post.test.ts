@@ -3,8 +3,7 @@ import { ApiHandler } from "../..";
 
 const basePath = "http://localhost:3333";
 // const basePath = "https://actual_url.com";
-const hash: string = `hello`;
-const apiHandler = new ApiHandler(hash, basePath);
+const apiHandler = new ApiHandler(basePath);
 
 test("POST - SUCCESS - TEST", async () => {
   const route: string = "/api/test";
@@ -15,7 +14,7 @@ test("POST - SUCCESS - TEST", async () => {
     email: email + "@email.com",
     password: password + "test123",
   };
-  const result = await apiHandler.POST({ route, payload, hash });
+  const result = await apiHandler.POST({ route, payload });
   expect(result).toHaveProperty("id");
   expect(result).toHaveProperty("email");
   expect(result).toHaveProperty("name");
@@ -27,8 +26,7 @@ test("POST - FAIL - TEST", async () => {
     email: "test@email.com",
     password: "test123",
   };
-  const hash: string = `hello`;
-  const result = await apiHandler.POST({ route, payload, hash });
+  const result = await apiHandler.POST({ route, payload });
   expect(result).toHaveProperty("error");
   expect(result).toHaveProperty("message");
 });

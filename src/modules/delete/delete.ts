@@ -1,7 +1,9 @@
 import fetch from "node-fetch";
 import { ResponseObject } from "../../constants";
 
-export async function DELETE(settings: typeof DEFAULT_DELETE_SETTINGS) {
+export async function DELETE_CALL_ROUTE(
+  settings: typeof DEFAULT_DELETE_SETTINGS
+) {
   try {
     settings = Object.assign({}, DEFAULT_DELETE_SETTINGS, settings);
     const options = {
@@ -26,13 +28,11 @@ export async function DELETE(settings: typeof DEFAULT_DELETE_SETTINGS) {
 export const DEFAULT_DELETE_SETTINGS: {
   cookie?: string;
   route: string;
-  hash: string;
   credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
   return_json?: boolean;
 } = {
   cookie: "",
   route: "",
-  hash: "",
   credentials: "include",
   return_json: true,
 };

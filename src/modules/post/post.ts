@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
 
-export async function POST(settings: typeof DEFAULT_POST_SETTINGS) {
+export async function POST_CALL_ROUTE(settings: typeof DEFAULT_POST_SETTINGS) {
   try {
     settings = Object.assign({}, DEFAULT_POST_SETTINGS, settings);
     const options = {
@@ -28,14 +28,12 @@ export const DEFAULT_POST_SETTINGS: {
   cookie?: string;
   route: string;
   payload: Payload;
-  hash: string;
   credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
   return_json?: boolean;
 } = {
   cookie: "",
   route: "",
   payload: {},
-  hash: "",
   credentials: "include",
   return_json: true,
 };

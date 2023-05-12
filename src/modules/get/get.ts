@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { Payload, ResponseObject } from "../../constants";
 
-export async function GET(settings: typeof DEFAULT_GET_SETTINGS) {
+export async function GET_CALL_ROUTE(settings: typeof DEFAULT_GET_SETTINGS) {
   try {
     settings = Object.assign({}, DEFAULT_GET_SETTINGS, settings);
     const options = {
@@ -35,14 +35,12 @@ export const DEFAULT_GET_SETTINGS: {
   cookie?: string;
   route: string;
   payload?: Payload;
-  hash: string;
   credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
   return_json?: boolean;
 } = {
   cookie: "",
   route: "",
   payload: {},
-  hash: "",
   credentials: "include",
   return_json: true,
 };
