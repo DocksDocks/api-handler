@@ -1,13 +1,13 @@
 import { expect, test } from "vitest";
 import { ApiHandler } from "../..";
 
-const basePath = "http://localhost:3333";
+const basePath = "http://localhost:3333/api";
 // const basePath = "https://actual_url.com";
 const apiHandler = new ApiHandler(basePath);
 
 test("PUT - SUCCESS - TEST", async () => {
   const id = "35c9dde5-bc82-40f4-bd95-4b73e7818714";
-  const route: string = `/api/test/${id}`;
+  const route: string = `/test/${id}`;
   const payload: Object = {
     name: "Tester",
   };
@@ -18,7 +18,7 @@ test("PUT - SUCCESS - TEST", async () => {
 });
 
 test("PUT - FAIL - TEST", async () => {
-  const route: string = "/api/test";
+  const route: string = "/test";
   const payload: Object = {
     email: "test@email.com",
   };

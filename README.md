@@ -10,7 +10,7 @@ create a 'handler.ts' to initialize the class and export it;
 ```
 import { ApiHandler } from 'empathy-api-handler';
 
-const basePath = "http://localhost:3333";
+const basePath = "http://localhost:3333/api";
 
 export const apiHandler = new ApiHandler(basePath);
 ```
@@ -19,7 +19,7 @@ now when using in other files you can import and use it with your instance:
 ```
 import { apiHandler } from "./handler";
 
-const route: string = "/api/login";
+const route: string = "/login";
 const payload: Object = {
     email: "test@email.com",
     password: "test123",
