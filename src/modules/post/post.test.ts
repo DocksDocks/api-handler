@@ -1,9 +1,5 @@
 import { expect, test } from "vitest";
-import { ApiHandler } from "../..";
-
-const basePath = "http://localhost:3333/api";
-// const basePath = "https://actual_url.com";
-const apiHandler = new ApiHandler(basePath);
+import { apiHandler } from "../../types/test";
 
 test("POST - SUCCESS - TEST", async () => {
   const route: string = "/test";

@@ -1,33 +1,16 @@
 import fetch from "node-fetch";
-import { ResponseObject } from "../../constants";
+import { getOptions } from "../utils/modules";
+import { DEFAULT_DELETE_SETTINGS } from "@/types/modules";
 
-export async function DELETE_CALL_ROUTE(
-  settings: typeof DEFAULT_DELETE_SETTINGS
-) {
-  settings = Object.assign({}, DEFAULT_DELETE_SETTINGS, settings);
-  const options = {
-    method: "DELETE",
-    credentials: settings.credentials ?? "include",
-    headers: {
-      "Content-Type": "application/json",
-      cookie: settings.cookie!,
-    },
-  };
-  // Make API request and get response object
-  const response = await fetch(settings.route, options);
-  if (!settings.return_json) return response;
-  const responseObject: ResponseObject = await response.json();
+export async function DELETE_CALL_ROUTE({
+  cookie,
+  route,
+  credentials,
+  return_json = true,
+}: DEFAULT_DELETE_SETTINGS) {
+  const options = getOptions({ method: "DELETE", cookie, credentials });
+  const response = await fetch(route, options);
+  if (!return_json) return response;
+  const responseObject = await response.json();
   return responseObject;
 }
-
-export const DEFAULT_DELETE_SETTINGS: {
-  cookie?: string;
-  route: string;
-  credentials?: RequestCredentials; // "include" | "same-origin" | "omit"
-  return_json?: boolean;
-} = {
-  cookie: "",
-  route: "",
-  credentials: "include",
-  return_json: true,
-};
